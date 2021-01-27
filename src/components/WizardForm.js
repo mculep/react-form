@@ -1,9 +1,25 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 const WizardForm = (props) => {
+    console.log(props.wizard)
     const [name, setName] = useState('');
     const [occupation, setOccupation] = useState('');
     const [house, setHouse] = useState('');
+
+    useEffect(() => {
+        console.log('the props have changed')
+        if (props.wizard.name) {
+            setName(props.wizard.name);
+            setOccupation(props.wizard.occupation);
+            setHouse(props.wizard.house);
+        }
+    }, [props]);
+
+
+    useEffect(() => {
+        console.log('you changed name')
+    }, [name]);
+
 
     return (
         <section>
